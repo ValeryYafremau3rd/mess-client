@@ -30,7 +30,7 @@ export const replenishPreKeys = async function (userId, startId, count = 5) {
   try {
     socket.emit("upload_more_prekeys", {
       userId,
-      oneTimePreKeys: generatePreKeys(startId, count),
+      oneTimePreKeys: await generatePreKeys(startId, count),
     });
     console.log("PreKeys uploaded successfully.");
   } catch (error) {
@@ -94,7 +94,7 @@ export const generateAndRegisterKeys = async function (
           key: arrayBufferToBase64(signedPreKey.keyPair.pubKey),
           signature: arrayBufferToBase64(signedPreKey.signature),
         },
-        oneTimePreKeys: generatePreKeys(startId, count),
+        oneTimePreKeys: await generatePreKeys(startId, count),
       },
     };
 
