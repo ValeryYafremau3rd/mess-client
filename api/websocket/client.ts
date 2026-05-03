@@ -8,6 +8,10 @@ export const initChatSocket = (token: string) => {
 
   socket = io(process.env.EXPO_PUBLIC_WEBSOCKET_API_URL, {
     auth: { token },
+    path: '/websocket/socket.io/',
+    query: {
+      token,
+    },
     transports: ["websocket"],
   });
 
